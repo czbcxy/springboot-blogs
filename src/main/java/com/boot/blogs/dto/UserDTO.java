@@ -11,12 +11,12 @@ import java.io.Serializable;
  */
 public class UserDTO implements Serializable {
 
-    private String id;
+    private Long id;
     private String name;
     private String email;
 
     public UserDTO(){}
-    public UserDTO(String id,String name,String email){
+    public UserDTO(long id,String name,String email){
         this.id=id;
         this.name=name;
         this.email=email;
@@ -32,11 +32,11 @@ public class UserDTO implements Serializable {
                 '}';
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

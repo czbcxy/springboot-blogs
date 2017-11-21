@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDao {
     private final Map<Long, UserDTO> userMap = new ConcurrentHashMap<Long, UserDTO>();
 
     @Override
-    public UserDTO insertOrupdateUser(UserDTO userDTO) throws Exception {
+    public UserDTO insertOrUpdateUser(UserDTO userDTO) throws Exception {
         Long id = userDTO.getId();
         userDTO.setId(id == null ? counts.incrementAndGet() : id);
         this.userMap.put(id, userDTO);
@@ -29,12 +29,12 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void deleteUser(String id) throws Exception {
+    public void deleteUser(long id) throws Exception {
         this.userMap.remove(id);
     }
 
     @Override
-    public UserDTO selectUserById(String id) throws Exception {
+    public UserDTO selectUserById(long id) throws Exception {
         return this.userMap.get(id);
     }
 

@@ -19,7 +19,7 @@ public interface UserDao {
      * @return
      * @throws Exception
      */
-    UserDTO insertOrupdateUser(UserDTO userDTO) throws Exception;
+    UserDTO insertOrUpdateUser(UserDTO userDTO) throws Exception;
 
     /**
      * 删除用户信息
@@ -27,7 +27,7 @@ public interface UserDao {
      * @param id
      * @throws Exception
      */
-    void deleteUser(String id) throws Exception;
+    void deleteUser(long id) throws Exception;
 
 
     /**
@@ -37,7 +37,7 @@ public interface UserDao {
      * @return
      * @throws Exception
      */
-    UserDTO selectUserById(String id) throws Exception;
+    UserDTO selectUserById(long id) throws Exception;
 
     /**
      * 查询所有用户信息
