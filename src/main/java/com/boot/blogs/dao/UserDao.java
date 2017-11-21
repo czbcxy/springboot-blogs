@@ -2,6 +2,8 @@ package com.boot.blogs.dao;
 
 import com.boot.blogs.dto.UserDTO;
 
+import java.util.List;
+
 /**
  * 用户持久层接口
  *
@@ -17,7 +19,7 @@ public interface UserDao {
      * @return
      * @throws Exception
      */
-    String insertUser(UserDTO userDTO) throws Exception;
+    UserDTO insertOrupdateUser(UserDTO userDTO) throws Exception;
 
     /**
      * 删除用户信息
@@ -27,12 +29,22 @@ public interface UserDao {
      */
     void deleteUser(String id) throws Exception;
 
+
     /**
-     * 更改用户信息
+     * 查询用户信息
      *
-     * @param userDTO
+     * @param id
+     * @return
      * @throws Exception
      */
-    void updateUser(UserDTO userDTO) throws Exception;
+    UserDTO selectUserById(String id) throws Exception;
+
+    /**
+     * 查询所有用户信息
+     *
+     * @return
+     * @throws Exception
+     */
+    List<UserDTO> getListUsers() throws Exception;
 
 }
