@@ -1,6 +1,10 @@
 package com.boot.blogs.dto;
 
-import java.io.Serializable;
+import javax.persistence.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 /**
  * 用户实体
@@ -9,27 +13,36 @@ import java.io.Serializable;
  * @Date 2017/11/21
  * @TIME 上午11:44
  */
-public class UserDTO implements Serializable {
+@Entity
+public class UserDTO {
 
+//    EntityManager entityManager；springdate中自动戈恩宗实体类，并进行类似herbernate映射为CRUD等方法，进行持久化映射；
+
+    /**
+     * 设置id策略为主键自增
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String email;
 
-    public UserDTO(){}
-    public UserDTO(long id,String name,String email){
-        this.id=id;
-        this.name=name;
-        this.email=email;
+    /**
+     * 设置为protected是防止直接使用
+     *
+     * @param o
+     * @param name
+     * @param email
+     */
+    protected UserDTO(long o, Object name, Object email) {
     }
 
-
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+    public UserDTO(Long id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
     }
 
     public long getId() {
@@ -54,5 +67,10 @@ public class UserDTO implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("User[id=%d,name=%s,email=s%]", id, name, email);
     }
 }
