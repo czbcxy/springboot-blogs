@@ -15,7 +15,7 @@ import javax.persistence.Id;
 @Entity
 public class UserDTO {
 
-//    EntityManager entityManager；springdate中自动戈恩宗实体类，并进行类似herbernate映射为CRUD等方法，进行持久化映射；
+//    EntityManager entityManager；springdate中跟踪实体类，并进行类似herbernate映射为CRUD等方法，进行持久化映射；
 
     /**
      * 设置id策略为主键自增
@@ -29,40 +29,22 @@ public class UserDTO {
     private String email;
 
     private String password;
+
     private String rpassword;
 
-
-    /**
-     * 设置为protected是防止直接使用
-     *
-     * @param o
-     * @param name
-     * @param email
-     */
-    protected UserDTO(long o, Object name, Object email) {
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getPassword() {
-        return password;
+    public UserDTO() {
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRpassword() {
-        return rpassword;
-    }
-
-    public void setRpassword(String rpassword) {
-        this.rpassword = rpassword;
-    }
-
-    public UserDTO(Long id, String name, String email) {
-
+    public UserDTO(Long id, String name, String email, String password, String rpassword) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.password = password;
+        this.rpassword = rpassword;
     }
 
     public long getId() {
@@ -87,6 +69,22 @@ public class UserDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRpassword() {
+        return rpassword;
+    }
+
+    public void setRpassword(String rpassword) {
+        this.rpassword = rpassword;
     }
 
     @Override
