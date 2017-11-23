@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CAccount in blogs</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+
+    <style>
+
+        body {
+            text-align: center;
+            background: rgb(50, 183, 97);
+        }
+
+        .main {
+            position: absolute;
+            top: 35%;
+            left: 0;
+            right: 0;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            text-align: center;
+            left: 0;
+            right: 0;
+        }
+
+    </style>
+
+</head>
+<body>
+<div class="main" ng-app="CAccount" ng-controller="CAccountLogin" ng-init="initData()">
+    <form>
+        <tr class="tr-form">
+            <h1>Create a Free Account!</h1>
+            <td>
+                <label>Email: </label>
+                <input style="width:400px;height:25px" type="Email" placeholder="Email" ng-model="email" required/>
+                <div class="clear"></div>
+            </td>
+            <br/>
+            <td>
+                <label>username: </label>
+                <input style="width:400px;height:25px" type="text" placeholder="Username" ng-model="username"
+                       required/>
+                <div class="clear"></div>
+            </td>
+            <br/>
+            <td>
+                <label>password: </label>
+                <input style="width:400px;height:25px" type="password" placeholder="password" ng-model="password"
+                       required/>
+                <div class="clear"></div>
+            </td>
+            <br/>
+            <td>
+                <label>rpassword: </label>
+                <input style="width:400px;height:25px" type="password" placeholder="password" ng-model="password"
+                       required/>
+                <div class="clear"></div>
+            </td>
+            <br/>
+            <input style="width:150px;height:35px" type="submit" ng-submit="saveUser" value="Create Account">
+            <input style="width:150px;height:35px" type="reset" value="Reset Account">
+            <pre>
+               {{ formData }}
+             </pre>
+        </tr>
+    </form>
+</div>
+
+<div class="footer"> &copy; 2017 The blogs createAccout By chengzhengbo</div>
+</body>
+
+<script>
+    var caccount = angular.module("CAccount", []);
+    caccount.controller('CAccountLogin', function ($scope, $http) {
+        $scope.formData = {
+            email: $scope.email, username: $scope.username,
+            password: $scope.password,
+            rpassword: $scope.rpassword
+        };
+
+        $http({
+            method: 'POST',
+            url: 'users/save'
+        }).then(function successCallback(response) {
+            $scope.names = response.data.sites;
+        }, function errorCallback(response) {
+            // 请求失败执行代码
+        });
+
+    });
+</script>
+
+</html>
