@@ -1,10 +1,9 @@
 package com.boot.blogs.dto;
 
-import javax.persistence.Id;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * 用户实体
@@ -29,6 +28,10 @@ public class UserDTO {
 
     private String email;
 
+    private String password;
+    private String rpassword;
+
+
     /**
      * 设置为protected是防止直接使用
      *
@@ -39,7 +42,24 @@ public class UserDTO {
     protected UserDTO(long o, Object name, Object email) {
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRpassword() {
+        return rpassword;
+    }
+
+    public void setRpassword(String rpassword) {
+        this.rpassword = rpassword;
+    }
+
     public UserDTO(Long id, String name, String email) {
+
         this.id = id;
         this.name = name;
         this.email = email;
@@ -71,6 +91,7 @@ public class UserDTO {
 
     @Override
     public String toString() {
-        return String.format("User[id=%d,name=%s,email=s%]", id, name, email);
+        return String.format("User[id=%d,name=%s,email=s%,password=s%,rpassword=s%]", id, name, email, password, rpassword
+        );
     }
 }
