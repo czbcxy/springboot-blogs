@@ -70,7 +70,7 @@ public class UserController {
      * @return
      * @throws Exception
      */
-    @PostMapping("/all")
+    @PostMapping("/save")
     public ModelAndView insertOrUpdataUser(UserDTO userDTO) throws Exception {
         return new ModelAndView("users/list", "userModel", userService.save(userDTO));
     }
@@ -82,7 +82,7 @@ public class UserController {
      * @return
      * @throws Exception
      */
-    @PostMapping
+    @PostMapping("/delete")
     public ModelAndView deleteUser(UserDTO userDTO) throws Exception {
         userService.delete(userDTO);
         return new ModelAndView("redirect/users");
